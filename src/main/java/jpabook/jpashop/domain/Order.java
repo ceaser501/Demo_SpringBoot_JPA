@@ -36,5 +36,4 @@ public class Order {
     private LocalDateTime orderDate;    // 자바8에서는 하이버네이트가 자동 지원. 시분초
 
     private OrderStatus status;         // 주문상태 enum 타입 [ORDER, CANCEL]
-
 }

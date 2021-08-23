@@ -56,7 +56,7 @@ public class MemberService {
 
     /**
      * 단건조회
-     * @param 
+     * @param
      * @return
      */
     public Member findOne(Long memberId){

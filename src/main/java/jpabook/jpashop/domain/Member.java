@@ -25,5 +25,11 @@ public class Member {
     @OneToMany(mappedBy = "member")
     // 연관관계의 주인은 Order 이고, 주인이 아닌 쪽에서 mappedBy 주인쪽 컬럼을 지정해 준다
     // 변경 사항에 대해서 Member가 변해도 Order는 변경되지 않는다는 뜻 (읽기전용)
-   private List<Order> orders = new ArrayList<>();
+
+   // private List<Order> orders = new ArrayList<>();
+    private List<Order> orders;
+
+    public Member() {
+        orders = new ArrayList<>();
+    }
 }

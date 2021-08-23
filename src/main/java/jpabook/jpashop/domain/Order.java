@@ -41,7 +41,7 @@ public class Order {
 
     // Delivery의 order와 일대일 관계이므로 @OneToOne을 써줬는데, 이때 FK는 어디에 두어도 상관없다
     // 하지만 access가 좀더 일어나는 Order에 선언 해 두는 것을 추천한다
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL )
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 

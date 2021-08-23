@@ -48,4 +48,32 @@ public class Order {
     private LocalDateTime orderDate;    // 자바8에서는 하이버네이트가 자동 지원. 시분초
 
     private OrderStatus status;         // 주문상태 enum 타입 [ORDER, CANCEL]
+
+
+    //== 연관관계 편의 메서드 ==//
+    // 양방향의 경우 원자적으로 하나의 set으로 만들어 버림
+    // 어느쪽에 만드는지는 컨트롤이 많은 곳에 만들면 됌
+    public void setMember(Member member){
+        this.member = member;
+        member.getOrders().add(this);
+    }
+
+    // 원래는 member가 추가되거나, order가 추가되면 아래와 같이 main에서 양방향 모두에게 set하고 add 해야 함
+    // 편의 메서드를 Order에 해놓으면, main에서는 order.setMember(member); 한줄만으로 양쪽 모두에게 영향을 줄 수 있다다
+//   public static void main(String[] args){
+//        Member member = new Member();
+//        Order order = new Order();
+//
+//        order.setMember(member);
+//        member.getOrders().add(order);
+//    }
+
+    public void addOrderItem(OrderItem orderItem) {
+        orderItems.add(orderItem);
+        orderItem.setOrder(this);
+    }
+    public void setDelivery(Delivery delivery) {
+        this.delivery = delivery;
+        delivery.setOrder(this);
+    }
 }
